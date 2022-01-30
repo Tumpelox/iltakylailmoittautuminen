@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="tyylit.css">
+    <link rel="stylesheet" type="text/css" href="loader.css">
+    <meta name="theme-color" content="#ffffff">
+    <title>Iltakylä 19.11. ilmottautuminen</title>
+  </head>
+  <body id="kirjaudu">
+    <div id="loader-wrapper" class="loading">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div id="main">
+      <div id="ylalaatikko">
+        <h1>Ilmoittaudu iltakylään</h1>
+      </div>
+      <form action="" method="POST" autocomplete="off" onsubmit="kirjauduNappi.disabled = true; return true;">
+      <div class="tiedot" >
+        <a class="tlinkki kirjautuminen" href="/tarkasta">Tarkasta iltakyläpaikkasi tiedot <u>tästä linkistä</u></a>
+        <p class="ilmoitusteksti">Jos sinulla on koronaoireita tai olet altistunut koronalle, ethän osallistu iltakyliin.</p>
+          <label for="nimi">Nimesi</label>
+          <input type="text" name="nimi" id="nimikentta" required>
+      </div>
+      <div class="tiedot" >
+        <label for="puh">Puhelinnumerosi</label>
+        <input type="number" name="puh" pattern="^(?:0|\(?\+358\)?\s?|00358\s?)[1-79](?:[\.\-\s]?\d\d){4}$"  id="numerokentta" required>
+      </div>
+      <div class="tiedot" >
+          <label for="sahkoposti">Sähkopostisi</label>
+          <input type="email" name="sahkoposti" id="sahkopostikentta" required>
+          <div class="g-recaptcha" data-sitekey="6LcBHjwdAAAAAEQ0kMviZkJwivo5DWE8dD0aTMqh"></div>
+      </div>
+      <div class="tiedot">
+        <p class="tlinkki">Ilmoittautumiseen annettavia tietoja käytetään vain iltakyläpaikkojen jakamiseen ja tarvittaessa viranomaisten suorittamaan tartuntaketjujen jäljitykseen.<br><br>Tiedot säilytetään 3.6. asti jonka jälkeen ne poistetaan. Tietoja hallinnoi <a class="tlinkki" href = "mailto: tuomas.tornberg@motunix.fi"><u>tuomas.tornberg@motunix.fi</u></a></p>
+      </div>
+      <button type="submit" id="kirjaudu_nappi" name="kirjauduNappi" onclick="ladataan()">Ilmottaudu</button>
+      </form>
+    </div>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>
+      window.addEventListener("load", ladataan);
+      document.getElementById("kirjaudu_nappi").addEventListener("click", ladataan);
+      function ladataan() {
+        var loaderWrapper = document.getElementById('loader-wrapper');
+  
+        loaderWrapper.style.transition="opacity 1s";
+        loaderWrapper.style.opacity="0";
+  
+        var mainContent = document.getElementById('main');
+  
+        setTimeout(() => {
+        mainContent.style.transition="opacity 0.25s";
+        mainContent.style.opacity="1";}
+        , 250);
+  
+        setTimeout(function(){ loaderWrapper.classList.remove("loading"); }, 1000);
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="tyylit.css">
+    <link rel="stylesheet" type="text/css" href="loader.css">
+    <meta name="theme-color" content="#ffffff">
+    <title>Iltakylä 19.11. ilmottautuminen</title>
+  </head>
+  <body id="runko">
+    <div id="loader-wrapper" class="loading">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div id="main">
+        <div id="ylalaatikko">
+        <h1>Iltakyläpaikan tarkistus</h1>
+        </div>
+        <form action="" method="POST" autocomplete="off" onsubmit="kirjauduNappi.disabled = true; return true;">
+        <div class="tiedot" >
+            <label for="sahkoposti">Kirjoita sähköpostisi jota käytit ilmoittautumisessa</label>
+            <input type="email" name="sahkoposti" id="sahkopostikentta" required>
+            <div class="g-recaptcha" data-sitekey="6LcBHjwdAAAAAEQ0kMviZkJwivo5DWE8dD0aTMqh"></div>
+            <a class="tlinkki" href="/ilmoittaudu">Ilmoittautumiseen <u>tästä linkistä</u></a>
+        </div>
+        <button type="submit" id="kirjaudu_nappi" name="kirjauduNappi" onclick="ladataan()">Tarkasta</button>
+        </form>
+    </div>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>
+      window.addEventListener("load", ladataan);
+      document.getElementById("kirjaudu_nappi").addEventListener("click", ladataan);
+      function ladataan() {
+        var loaderWrapper = document.getElementById('loader-wrapper');
+  
+        loaderWrapper.style.transition="opacity 1s";
+        loaderWrapper.style.opacity="0";
+  
+        var mainContent = document.getElementById('main');
+  
+        setTimeout(() => {
+        mainContent.style.transition="opacity 0.25s";
+        mainContent.style.opacity="1";}
+        , 250);
+  
+        setTimeout(function(){ loaderWrapper.classList.remove("loading"); }, 1000);
+      }
+      </script>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+:root {
+    --teema: #4a4a4a;
+    --tausta: #ffffff;
+    --teksti: #000000;
+    --nappiteksti: #ffffff;
+}
+html {
+    height: 100%;
+    position: relative;
+}
+body {
+    margin: 0;
+    font-family: arial;
+    background: var(--tausta);
+    color: var(--teksti);
+    position: relative;
+    padding-bottom: 90px;
+    padding-top: 30px;
+}
+body#runko {
+    transition: padding 0.5s ease;
+}
+body.ilmoitus-tallennettu {
+    padding-top: 120px;
+}
+.ilmoitus {
+    color: transparent;
+    margin: 0;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    transition: all 0.5s ease;
+    transform: translateY(-100%);
+}
+.ilmoitus.ilmoitus-tallennettu {
+    background: var(--teema);
+    position: fixed;
+    color: var(--nappiteksti);
+    transform: translateY(0);
+}
+.ilmoitus.ilmoitus-Virhe {
+    background: #c72e00;
+    display:block }
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+#tieto-boksi {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tiedot {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
+    font-size: 20px;
+    margin: 0 0 35px;
+}
+.tieto-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.tiedot-tyyppi {
+    flex-direction: row;
+}
+.tiedot-tyyppi div {
+    position: relative;
+    width: 100%;
+    height: 50px;
+}
+.tiedot > label {
+    font-size: 18px;
+}
+.tiedot-tyyppi label {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+input {
+    font-size: 20px;
+    border: none;
+    height: 30px;
+    color: var(--teksti);
+    border-bottom: 2px solid;
+    padding: 0 0 10px;
+}
+input[type="radio"] {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    visibility: hidden;
+    height: 100%;
+}
+input[type="radio"]:checked + label {
+    background: var(--teema);
+    color: var(--nappiteksti);
+}
+#paivamaara2, #paivamaara1, #paivamaara {
+    display: flex;
+    background-color: var(--tausta);
+    color: var(--teksti);
+    font-family: arial;
+    width: 100%;
+    text-align: center;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: url(oulu.jfif) no-repeat;
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: #3535353b;
+    margin-top: 0;
+    max-width: 100vw;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+button {
+    height: 80px;
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    margin: 50px 0 0;
+    background: var(--teema);;
+    outline: none;
+    font-size: 25px;
+    border: none;
+    color: var(--nappiteksti);
+}
+.raksi {
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    bottom: 50%;
+    background: var(--nappiteksti);
+    transform: rotate( 45deg);
+}
+.raksi::before {
+    content: '';
+    height: 2px;
+    width: 30px;
+    background: var(--nappiteksti);
+    position: absolute;
+    transform: rotate(90deg) translateY(15px);
+}
+.ilmoitusteksti {
+    font-size: 13px;
+}
+#poistonappi {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    height: 30px;
+    width: 30px;
+}
+#ylalaatikko {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    height: 100px;
+}
+#ylalaatikko a {
+    line-height: 60px;
+    display: flex;
+}
+body#kirjaudu #ylalaatikko{
+    margin-bottom: 25px;
+}
+.tlinkki {
+    text-decoration: unset;
+    color: #4a4a4a;
+    text-align: left;
+    font-size: 13px;
+    padding: 40px 0;
+}
+#keskikulutus {
+    transition: all 0.5s ease;
+    position: relative;
+    height: 0;
+    margin: 0 0 35px;
+    transform: scaleY(0);
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+}
+.keskikulutus-nappi {
+    height: 60.5px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #41bdc3;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: all 0.5s ease;
+}
+input[type="checkbox"] {
+    height: 54px;
+    opacity: 0;
+    position: absolute;
+    width: 95vw;
+    flex-grow: 1;
+}
+#keskikulutus.kaytossa {
+    transform: scaleY(1);
+    height: 73px;
+}
+#keskikulutusKm {
+    flex-grow: 1;
+    display: flex;
+    width: 0;
+    flex-direction: column;
+    transform: scaleX(1);
+    transition: all 0.5s ease;
+}
+#keskikulutusKm label {
+    opacity: 0;
+    transition: all 0.5s;
+}
+#keskikulutusKm.keskikulutus {
+    transform: scaleX(1);
+}
+#keskikulutusKm.keskikulutus label {
+    opacity: 1;
+}
+.tlinkki.kirjautuminen {
+    padding: 5px 0 0;
+}
+input[type="checkbox"] + label {
+    width: 95vw;
+    flex-grow: 1;
+    text-align: center;
+    transition: all 0.5s ease;
+    line-height: 57px;
+}
+input[type="checkbox"]:checked {
+    width: 188px;
+}
+input[type="checkbox"]:checked + label {
+    width: 188px;
+    flex-grow: 0;
+    text-align: center;
+    color: var(--nappiteksti);
+    background: var(--teema);
+}
+@keyframes sulku {
+    
+}

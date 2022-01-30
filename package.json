@@ -1,0 +1,19 @@
+{
+  "name": "ilmottautuminen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tuomas Tornberg",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-recaptcha": "^5.0.2",
+    "googleapis": "^91.0.0"
+  }
+}

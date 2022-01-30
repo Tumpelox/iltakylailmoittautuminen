@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="tyylit.css">
+    <link rel="stylesheet" type="text/css" href="loader.css">
+    <meta name="theme-color" content="#ffffff">
+    <title>Iltakylä 19.11. ilmottautuminen</title>
+  </head>
+  <body id="runko">
+    <div id="loader-wrapper" class="loading">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div id="main">
+      <div id="ylalaatikko">
+        <h1>Iltakylä</h1>
+      </div>
+      <div class="tieto-wrapper">
+        <div class="tiedot">
+          <% if (data.kylapaikka == "Virhe") { %>
+            <h2 class="kylapaikka"><%= data.kylapaikka %></h2>
+            <a class="tlinkki" href="/tarkasta">Tarkasta iltakyläpaikkasi tiedot <u>tästä linkistä</u></a>
+          <% } %>
+          <% if (data.kylapaikka != "Virhe") { %>
+            <p>Tervetuloa meille iltakylään, osoitteemme on</p>
+            <h3 class="kylapaikka"><%= data.kylapaikka %></h3>
+            <p>Perjantaina 19.11. klo 18 alkaen. Noudatamme nyyttäriperiaatetta</p>
+            <p>Ilmoitathan tulostasi laittamalla viestiä meille</p>
+            <p class="ilmoitusteksti">Jos sinulla on koronaoireita tai olet altistunut koronalle, ethän osallistu iltakyliin.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener("load", ladataan);
+      document.getElementById("kirjaudu_nappi").addEventListener("click", ladataan);
+      function ladataan() {
+        var loaderWrapper = document.getElementById('loader-wrapper');
+  
+        loaderWrapper.style.transition="opacity 1s";
+        loaderWrapper.style.opacity="0";
+  
+        var mainContent = document.getElementById('main');
+  
+        setTimeout(() => {
+        mainContent.style.transition="opacity 0.25s";
+        mainContent.style.opacity="1";}
+        , 250);
+  
+        setTimeout(function(){ loaderWrapper.classList.remove("loading"); }, 1000);
+      }
+      </script>
+  </body>
+</html>
+
